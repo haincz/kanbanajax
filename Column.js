@@ -20,13 +20,14 @@ function Column(id, name) {
 		
 		columnAddCard.click(function(event) {
 			var cardName = prompt("Wpisz nazwę karty");
-			event.preventDefault();
+			
+            event.preventDefault();
 			$.ajax({
 			    url: baseUrl + '/card',
 			    method: 'POST',
 			    data: {
-			    name: cardName,
-			    bootcamp_kanban_column_id: self.id
+			        name: cardName,
+			        bootcamp_kanban_column_id: self.id
 			    },
 			    success: function(response) {
 			        var card = new Card(response.id, cardName);
@@ -40,21 +41,24 @@ function Column(id, name) {
 			.append(columnDelete)
 			.append(columnAddCard)
 			.append(columnCardList);
-			return column;
-		}
+			
+        return column;
 	}
+}
+
 Column.prototype = {
 	createCard: function(card) {
 	  this.element.children('ul').append(card.element);
 	},
 	deleteColumn: function() {
-    var self = this;
-    $.ajax({
-      url: baseUrl + '/column/' + self.id,
-      method: 'DELETE',
-      success: function(response){
-        self.element.remove();
-      }
-    });
- }
+        var self = this;
+        
+        $.ajax({
+          url: baseUrl + '/column/' + self.id,
+          method: 'DELETE',
+          success: function(response){
+            self.element.remove();
+          }
+        });
+     }
 };

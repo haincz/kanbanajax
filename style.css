@@ -1,5 +1,10 @@
-body {margin: 0;}
-* {box-sizing: border-box;}
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 .ui-sortable {
   min-height: 80px;
@@ -23,7 +28,6 @@ body {margin: 0;}
   flex-direction: row;
   flex-wrap: nowrap;
 }
-
 
 /* COLUMN */
 .column {
